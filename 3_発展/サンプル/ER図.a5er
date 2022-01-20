@@ -1,0 +1,93 @@
+﻿# A5:ER FORMAT:13
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  http://www.wind.sannet.ne.jp/m_matsu/developer/a5m2/
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=6
+RDBMSTypeName=PostgreSQL
+CreateFk=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Entity]
+PName=genres
+LName=商品ジャンル
+Comment=
+TableOption=
+Page=MAIN
+Left=50
+Top=50
+Field="ジャンルID","genre_id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ジャンル名","genre_name","character varying(50)",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",50,50
+ZOrder=2
+
+[Entity]
+PName=products
+LName=商品
+Comment=
+TableOption=
+Page=MAIN
+Left=350
+Top=50
+Field="商品ID","product_id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="商品名","product_name","character varying(50)",,,"","",$FFFFFFFF,""
+Field="ジャンルID","genre_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",350,50
+ZOrder=1
+
+[Relation]
+Entity1=genres
+Entity2=products
+RelationType1=1
+RelationType2=3
+Fields1=genre_id
+Fields2=genre_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,333,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=33
+TermPos1=R
+TermPos2=R
+ZOrder=0
