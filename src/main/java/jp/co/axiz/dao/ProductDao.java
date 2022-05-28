@@ -1,4 +1,4 @@
-package jp.co.axiz.dao;
+package main.java.jp.co.axiz.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,13 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * todoと書かれている場所に必要な処理を実装してください
- * また、エンティティ作成後、下記のimportのコメントを外してください
- */
-
-//import jp.co.axiz.entity.Product;
-import jp.co.axiz.util.ParamUtil;
+import main.java.jp.co.axiz.entity.Product;
+import main.java.jp.co.axiz.util.ParamUtil;
 
 /**
  * productsテーブル用DAO
@@ -73,7 +68,7 @@ public class ProductDao {
 
         // 引数の値をセット
         if (pd != null) {
-            productName = pd.getProductName();
+            productName = pd.getProduct_name();
             price = pd.getPrice();
         }
 
@@ -89,11 +84,13 @@ public class ProductDao {
             paramList.add(productName); // プレースホルダーに埋め込む値
         }
 
-        // todo:
+        
         // priceが入力されている場合、
         // 「price = ?」をWHEREの条件として使用する
-        // 上記のproduct_nameが入力されている際の処理を参考にしてください
-
+        if (!(price == null)) {
+        	conditionList.add("price = ?");
+        	paramList.add(price);
+        }
 
         // WHERE句の文字列生成
         // 「product_name = ?」、「price = ?」などの
@@ -117,6 +114,8 @@ public class ProductDao {
             }
 
             // todo:SQL文実行
+            ResultSet rs = stmt.executeQuery();
+
 
 
             // 取得した件数分、処理を繰り返す
